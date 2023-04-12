@@ -1,6 +1,11 @@
+<%@page import="com.leekyuhyun.test.MemberDTO"%>
 <%@page import="com.leekyuhyun.test.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<jsp:useBean id="dto" class="com.leekyuhyun.test.MemberDTO"></jsp:useBean>
+<jsp:setProperty property="*" name="dto"/>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,13 +14,21 @@
 </head>
 <body>
 	<%
-		String mid = request.getParameter("userID");
-		String mpw = request.getParameter("userPW");
-		String memail = request.getParameter("userMAIL");
+		//useBean, setProperty 액션태그 처리
+		
+		//String mid = request.getParameter("userID");
+		//String mpw = request.getParameter("userPW");
+		//String memail = request.getParameter("userMAIL");
+		
+		//MemberDTO dto = new MemberDTO();
+		
+		//dto.setId(mid);
+		//dto.setPass(mpw);
+		//dto.setEmail(memail);
 		
 		MemberDAO dao = new MemberDAO();
 		
-		int dbFlag = dao.insertMember(mid, mpw, memail);
+		int dbFlag = dao.insertMember(dto);
 		
 		if(dbFlag == 1) {
 			System.out.println("회원 가입 성공!");
