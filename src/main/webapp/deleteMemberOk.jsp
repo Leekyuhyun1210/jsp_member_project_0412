@@ -16,7 +16,6 @@
 		int dbFlag = dao.deleteMember(mid);
 		
 		if(dbFlag == 1) {
-			session.setAttribute("sessionId", mid);
 	%>			
 		<script type="text/javascript">
 			alert('회원 탈퇴 성공!');
